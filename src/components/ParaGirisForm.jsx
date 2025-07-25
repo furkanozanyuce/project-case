@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 const { TextArea } = Input;
 const { Text } = Typography;
 
-const ParaCikisForm = ({ onSubmit, onCancel }) => {
+const ParaGirisForm = ({ onSubmit, onCancel }) => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
       transactionType: 'musteri',
@@ -149,4 +149,4 @@ const ParaCikisForm = ({ onSubmit, onCancel }) => {
   );
 };
 
-export default ParaCikisForm;
+export default ParaGirisForm;

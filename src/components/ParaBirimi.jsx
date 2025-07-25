@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Card, Button, Dropdown, Typography, Space, Popover } from 'antd';
 import { DownOutlined, PlusOutlined, MinusOutlined, SwapOutlined, InboxOutlined, DeleteOutlined } from '@ant-design/icons';
-import ParaCikisForm from './ParaCikisForm';
+import ParaGirisForm from './ParaGirisForm';
 
 const { Title, Text } = Typography;
 
@@ -12,7 +12,7 @@ const ParaBirimi = ({
   description,
   balance
 }) => {
-  const [showParaCikisiForm, setShowParaCikisiForm] = useState(false);
+  const [showParaGirisForm, setShowParaGirisForm] = useState(false);
 
   const dropdownItems = [
     {
@@ -33,12 +33,12 @@ const ParaBirimi = ({
     },
   ];
 
-  const handleParaCikisiSubmit = () => {
-    setShowParaCikisiForm(false);
+  const handleParaGirisSubmit = () => {
+    setShowParaGirisForm(false);
   };
 
-  const handleParaCikisiCancel = () => {
-    setShowParaCikisiForm(false);
+  const handleParaGirisCancel = () => {
+    setShowParaGirisForm(false);
   };
 
   return (
@@ -60,33 +60,34 @@ const ParaBirimi = ({
 </div>
 
         <div className="flex items-center mt-5 pt-5 border-t border-gray-200">
-          <Button 
+          
+          
+          <div className="flex flex-1/9">
+            <Popover
+              content={
+                <ParaGirisForm
+                  onSubmit={handleParaGirisSubmit}
+                  onCancel={handleParaGirisCancel}
+                />
+              }
+              trigger="click"
+              open={showParaGirisForm}
+              onOpenChange={setShowParaGirisForm}
+              placement="bottomLeft"
+            >
+              <Button 
             icon={<PlusOutlined />} 
             className="flex-1 border-gray-300 text-gray-700 hover:border-gray-400"
           >
             Para Girişi
           </Button>
-          
-          <div className="flex flex-1/9">
-            <Popover
-              content={
-                <ParaCikisForm
-                  onSubmit={handleParaCikisiSubmit}
-                  onCancel={handleParaCikisiCancel}
-                />
-              }
-              trigger="click"
-              open={showParaCikisiForm}
-              onOpenChange={setShowParaCikisiForm}
-              placement="bottomLeft"
-            >
-              <Button 
+            </Popover>
+            <Button 
                 icon={<MinusOutlined />}
                 className="flex-1 border-gray-300 text-gray-700 hover:border-gray-400 rounded-r-none border-r-0"
               >
                 Para Çıkışı
               </Button>
-            </Popover>
             <Dropdown
               menu={{ items: dropdownItems }}
               trigger={['click']}
